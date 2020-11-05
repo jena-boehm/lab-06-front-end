@@ -8,7 +8,8 @@ const user = {
 
 export default class CreatePage extends Component {
     state = {
-        genres: []
+        genres: [],
+        genreId: 1
     }
 
     componentDidMount = async () => {
@@ -35,10 +36,10 @@ export default class CreatePage extends Component {
             this.props.history.push('/');
     }
 
-    handleChange = (e) => {
-        this.setState({ genreId: e.target.value });
-        console.log(this.state.genreId);
-    }
+    // handleChange = (e) => {
+    //     this.setState({ genreId: e.target.value });
+    //     console.log(e.target.value);
+    // }
 
     render() {
         console.log(this.state.genres);
@@ -61,11 +62,13 @@ export default class CreatePage extends Component {
                     </label>
                     <label>
                         Genre
-                        <select onChange={this.handleChange}>
+                        <select onChange={(e) => this.setState({
+                            genreId: e.target.value
+                        })}>
                             {
                                 this.state.genres.map(genre =>
                                     <option key={genre.id} value={genre.id}>
-                                        {genre.genre}
+                                        {genre.id}
                                     </option>)
                             }
                         </select>
