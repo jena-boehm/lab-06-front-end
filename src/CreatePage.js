@@ -68,7 +68,7 @@ export default class CreatePage extends Component {
                             {
                                 this.state.genres.map(genre =>
                                     <option key={genre.id} value={genre.id}>
-                                        {genre.id}
+                                        {genre.genre}
                                     </option>)
                             }
                         </select>
