@@ -45,25 +45,24 @@ export default class CreatePage extends Component {
     render() {
         console.log(this.state.genres);
         return (
-            <div className="create-page">
-                <Link to="/">Home</Link>
-                <h1>Add a New Movie</h1>
-                <div>Please fill out this form to add a new movie to the database.</div>
-                <form className="create-form" onSubmit={this.handleSubmit}>
-                    <label className="create-label">
+            <div className="body">
+                <header className="title">Add a New Movie</header>
+                <div className="description">Please fill out this form to add a new movie to the database.</div>
+                <form className="form" onSubmit={this.handleSubmit}>
+                    <label className="label">
                         Name: 
                         <input onChange={e => this.setState({ name: e.target.value})} />
                     </label>
-                    <label className="create-label">
+                    <label className="label">
                         Year: 
                         <input onChange={e => this.setState({ year: e.target.value})} type="number" />
                     </label>
-                    <label className="create-label">
+                    <label className="label">
                         Oscars: 
                         <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="true" name="oscars" />True 
                         <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="false" name="oscars" />False
                     </label>
-                    <label className="create-label">
+                    <label className="label">
                         Genre: 
                         <select onChange={(e) => this.setState({
                             genreId: e.target.value
@@ -76,11 +75,13 @@ export default class CreatePage extends Component {
                             }
                         </select>
                     </label>
-                    <label className="create-label">
+                    <label className="label">
                         Owner ID: 
                         <input onChange={e => this.setState({ owner_id: e.target.value})} type="number" />
                     </label>
-                    <button className="create-submit">Submit</button>
+                    <div class="button-container">
+                        <button className="submit">Submit</button>
+                    </div>
                 </form>
             </div>
         )

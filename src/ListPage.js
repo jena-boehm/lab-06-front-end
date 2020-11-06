@@ -19,21 +19,22 @@ state = {
     const { movies } = this.state;
     return (
       <div>
-        <Link to="/create">Add a Movie</Link>
-      <div className="movie-list">
-        <h1>Full Movie List</h1>
-        {
-          movies.map(movie => 
-            <Link to={`/movie/${movie.id}`}>
-              <MoviesRender
-                name={movie.name}
-                year={movie.year}
-                oscars={movie.oscars}
-                genre={movie.genre}
-                ownerId={movie.owner_id} />
-              </Link>
-            )
-        }
+      <div className="body">
+        <header className="title">Full Movie List</header>
+        <div className="movie-grid">
+          {
+            movies.map(movie => 
+              <Link to={`/movie/${movie.id}`} className="movie-link">
+                <MoviesRender
+                  name={movie.name}
+                  year={movie.year}
+                  oscars={movie.oscars}
+                  genre={movie.genre}
+                  ownerId={movie.owner_id} />
+                </Link>
+              )
+          }
+        </div>
       </div>
       </div>
     )

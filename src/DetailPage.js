@@ -69,34 +69,24 @@ export default class DetailPage extends Component {
     render() {
         console.log(this.state.movieData, this.state.matchingGenre);
         return (
-            <div>
-                <Link to="/">Home</Link> |
-                | <Link to="/create">Add a Movie</Link>
-                <div className="movie-detail">
-                    <MoviesRender
-                        name={this.state.movieData.name}
-                        year={this.state.movieData.year}
-                        oscars={this.state.movieData.oscars}
-                        genre={this.state.matchingGenre.genre}
-                        ownerId={this.state.movieData.owner_id} />
-                </div>
-                <h1>Update {this.state.movieData.name}</h1>
-                <div>Please fill out this form to update this movie in the database.</div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>
+            <div className="body">
+                <header className="title">Update {this.state.movieData.name}</header>
+                <div className="description">Please fill out this form to update this movie in the database.</div>
+                <form onSubmit={this.handleSubmit} className="form">
+                    <label className="label">
                         Name
                         <input onChange={e => this.setState({ name: e.target.value})} value={this.state.name}/>
                     </label>
-                    <label>
+                    <label className="label">
                         Year
                         <input onChange={e => this.setState({ year: e.target.value})} type="number" value={this.state.year}/>
                     </label>
-                    <label>
+                    <label className="label">
                         Oscars
-                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value={true} name="oscars" />
-                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value={false} name="oscars" />
+                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value={true} name="oscars" /> True
+                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value={false} name="oscars" /> False
                     </label>
-                    <label>
+                    <label className="label">
                         Genre
                         <select onChange={(e) => this.setState({
                             genreId: e.target.value
@@ -109,13 +99,17 @@ export default class DetailPage extends Component {
                             }
                         </select>
                     </label>
-                    <label>
+                    <label className="label">
                         Owner ID
                         <input onChange={e => this.setState({ owner_id: e.target.value})} type="number" value={this.state.ownerId}/>
                     </label>
-                    <button>Update</button>
+                    <div className="button-container">
+                        <button className="submit">Update</button>
+                    </div>
                 </form>
-                <button onClick={this.handleDelete}>Delete Movie</button>
+                <div className="delete-container">
+                    <button onClick={this.handleDelete} className="delete">Delete Movie</button>
+                </div>
             </div>
         )
     }
