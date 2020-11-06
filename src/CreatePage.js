@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import request from 'superagent';
+import { Link } from 'react-router-dom';
 
 const user = {
     userId: 1
@@ -45,7 +46,9 @@ export default class CreatePage extends Component {
         console.log(this.state.genres);
         return (
             <div className="create-page">
+                <Link to="/">Home</Link>
                 <h1>Add a New Movie</h1>
+                <div>Please fill out this form to add a new movie to the database.</div>
                 <form className="create-form" onSubmit={this.handleSubmit}>
                     <label className="create-label">
                         Name: 

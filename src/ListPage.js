@@ -1,9 +1,8 @@
 import './App.css';
-import request from 'superagent';
 import React, { Component } from 'react';
 import MoviesRender from './MoviesRender.js'
 import { Link } from 'react-router-dom';
-import { fetchMovies } from './fetches.js';
+import { fetchMovies } from './APIFunctions.js';
 
 export default class App extends Component {
 state = {
@@ -20,8 +19,9 @@ state = {
     const { movies } = this.state;
     return (
       <div>
-        <Link to="/create">Create Page</Link>
+        <Link to="/create">Add a Movie</Link>
       <div className="movie-list">
+        <h1>Full Movie List</h1>
         {
           movies.map(movie => 
             <Link to={`/movie/${movie.id}`}>
