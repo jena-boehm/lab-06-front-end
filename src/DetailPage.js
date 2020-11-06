@@ -62,7 +62,7 @@ export default class DetailPage extends Component {
 
     handleDelete = async (e) => {
         e.preventDefault();
-        await deleteMovie(this.state.id);
+        await deleteMovie(this.state.movieData.id);
         this.props.history.push('/');
     }
 
