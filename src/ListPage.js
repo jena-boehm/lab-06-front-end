@@ -24,12 +24,14 @@ state = {
       <div className="movie-list">
         {
           movies.map(movie => 
-            <MoviesRender
-              name={movie.name}
-              year={movie.year}
-              oscars={movie.oscars}
-              genre={movie.genre}
-              ownerId={movie.owner_id} />
+            <Link to={`/movie/${movie.id}`}>
+              <MoviesRender
+                name={movie.name}
+                year={movie.year}
+                oscars={movie.oscars}
+                genre={movie.genre}
+                ownerId={movie.owner_id} />
+              </Link>
             )
         }
       </div>

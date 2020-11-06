@@ -1,5 +1,12 @@
 import React, { Component } from 'react'
 import request from 'superagent';
+import MoviesRender from './MoviesRender.js'
+import { Link } from 'react-router-dom';
+import {
+    fetchGenres,
+    updateMovie,
+    fetchMovie,
+} from './fetches.js';
 
 const user = {
     userId: 1
@@ -9,43 +16,55 @@ const user = {
 export default class DetailPage extends Component {
     state = {
         genres: [],
-        genreId: 1
+        genreId: 1,
+        movieData: {},
+        matchingGenre: {name: ''}
     }
 
     componentDidMount = async () => {
-        const response = await request.get('https://safe-ridge-25828.herokuapp.com/genres');
+        const genres = await fetchGenres();
+        const movie = await fetchMovie(this.props.match.params.id);
+        const matchingGenre = genres.find((genre) => {
+            return genre.id === movie.genre_id
+        });
 
-        this.setState({ genres: response.body });
+        this.setState({
+            genres: genres,
+            genreId: matchingGenre.id,
+            matchingGenre: matchingGenre,
+            movieData: movie
+        });
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();
 
-        const newMovie = {
-            genre_id: this.state.genreId,
-            name: this.state.name,
-            oscars: this.state.oscars,
-            year: this.state.year,
-            owner_id: user.userId
-        };
-
-        await request
-            .post('https://safe-ridge-25828.herokuapp.com/movies')
-            .send(newMovie);
+        await updateMovie(
+            this.props.match.params.id,
+            {
+                name: this.state.name,
+                year: this.state.year,
+                oscars: this.state.oscars,
+                genre_id: this.state.genreId,
+                owner_id: user.userId
+            });
 
             this.props.history.push('/');
     }
 
-    // handleChange = (e) => {
-    //     this.setState({ genreId: e.target.value });
-    //     console.log(e.target.value);
-    // }
-
     render() {
-        console.log(this.state.genres);
+        console.log(this.state.movieData, this.state.matchingGenre);
         return (
             <div>
-                <h1>Add a New Movie</h1>
+                <div className="movie-detail">
+                    <MoviesRender
+                        name={this.state.movieData.name}
+                        year={this.state.movieData.year}
+                        oscars={this.state.movieData.oscars}
+                        genre={this.state.matchingGenre.genre}
+                        ownerId={this.state.movieData.owner_id} />
+                </div>
+                <h1>Update Movie</h1>
                 <form onSubmit={this.handleSubmit}>
                     <label>
                         Name
