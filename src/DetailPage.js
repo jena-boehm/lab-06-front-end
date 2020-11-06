@@ -6,7 +6,7 @@ const user = {
 };
 
 
-export default class CreatePage extends Component {
+export default class DetailPage extends Component {
     state = {
         genres: [],
         genreId: 1
@@ -44,24 +44,24 @@ export default class CreatePage extends Component {
     render() {
         console.log(this.state.genres);
         return (
-            <div className="create-page">
+            <div>
                 <h1>Add a New Movie</h1>
-                <form className="create-form" onSubmit={this.handleSubmit}>
-                    <label className="create-label">
-                        Name 
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Name
                         <input onChange={e => this.setState({ name: e.target.value})} />
                     </label>
-                    <label className="create-label">
-                        Year 
+                    <label>
+                        Year
                         <input onChange={e => this.setState({ year: e.target.value})} type="number" />
                     </label>
-                    <label className="create-label">
-                        Oscars 
-                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="true" name="oscars" />True 
-                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="false" name="oscars" />False
+                    <label>
+                        Oscars
+                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="true" name="oscars" />
+                        <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="false" name="oscars" />
                     </label>
-                    <label className="create-label">
-                        Genre 
+                    <label>
+                        Genre
                         <select onChange={(e) => this.setState({
                             genreId: e.target.value
                         })}>
@@ -73,11 +73,11 @@ export default class CreatePage extends Component {
                             }
                         </select>
                     </label>
-                    <label className="create-label">
-                        Owner ID 
+                    <label>
+                        Owner ID
                         <input onChange={e => this.setState({ owner_id: e.target.value})} type="number" />
                     </label>
-                    <button className="create-submit">Submit</button>
+                    <button>Submit</button>
                 </form>
             </div>
         )

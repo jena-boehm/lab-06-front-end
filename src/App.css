@@ -12,3 +12,23 @@
   text-align: center;
   line-height: 20px;
 }
+
+.create-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.create-form {
+  display: grid;
+}
+
+.create-submit {
+  width: 80px;
+  margin-top: 5px;
+}
+
+.create-label {
+  margin-bottom: 5px;
+}
