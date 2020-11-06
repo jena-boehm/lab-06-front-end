@@ -48,20 +48,20 @@ export default class CreatePage extends Component {
                 <h1>Add a New Movie</h1>
                 <form className="create-form" onSubmit={this.handleSubmit}>
                     <label className="create-label">
-                        Name 
+                        Name: 
                         <input onChange={e => this.setState({ name: e.target.value})} />
                     </label>
                     <label className="create-label">
-                        Year 
+                        Year: 
                         <input onChange={e => this.setState({ year: e.target.value})} type="number" />
                     </label>
                     <label className="create-label">
-                        Oscars 
+                        Oscars: 
                         <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="true" name="oscars" />True 
                         <input onChange={e => this.setState({ oscars: e.target.value})} type="radio" value="false" name="oscars" />False
                     </label>
                     <label className="create-label">
-                        Genre 
+                        Genre: 
                         <select onChange={(e) => this.setState({
                             genreId: e.target.value
                         })}>
@@ -74,7 +74,7 @@ export default class CreatePage extends Component {
                         </select>
                     </label>
                     <label className="create-label">
-                        Owner ID 
+                        Owner ID: 
                         <input onChange={e => this.setState({ owner_id: e.target.value})} type="number" />
                     </label>
                     <button className="create-submit">Submit</button>

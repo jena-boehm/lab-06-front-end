@@ -32,3 +32,7 @@
 .create-label {
   margin-bottom: 5px;
 }
+
+input, select {
+  margin-left: 5px;
+}
