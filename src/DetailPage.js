@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import MoviesRender from './MoviesRender.js'
-import { Link } from 'react-router-dom';
 import {
     fetchGenres,
     updateMovie,

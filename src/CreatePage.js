@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import request from 'superagent';
-import { Link } from 'react-router-dom';
 
 const user = {
     userId: 1
