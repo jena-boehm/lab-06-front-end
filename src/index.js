@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './Fonts/Showtime.ttf';
+import './Fonts/StyleThief.ttf';
+import './Fonts/Abel.ttf';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -7,6 +7,8 @@ import {
 } from 'react-router-dom';
 import ListPage from './ListPage.js';
 import CreatePage from './CreatePage.js';
+import DetailPage from './DetailPage.js';
+import Header from './Header.js';
 
 
 export default class App extends Component {
@@ -14,6 +16,7 @@ export default class App extends Component {
         return (
             <div>
                 <Router>
+                    <Header className="header" />
                     <Switch>
                         <Route
                             path="/"
@@ -24,6 +27,11 @@ export default class App extends Component {
                             path="/create"
                             exact
                             render={(routerProps) => <CreatePage {...routerProps} />}
+                        />
+                        <Route
+                            path="/movie/:id"
+                            exact
+                            render={(routerProps) => <DetailPage {...routerProps} />}
                         />
                     </Switch>
                 </Router>

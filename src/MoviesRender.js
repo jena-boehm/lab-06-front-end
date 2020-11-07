@@ -5,7 +5,7 @@ export default class MoviesList extends Component {
         return (
             <div className="movie">
                 <div className="id">{this.props.id}</div>
-                <div className="movie-name">Movie: {this.props.name}</div>
+                <div className="movie-name">{this.props.name}</div>
                 <div className="year">Year: {this.props.year}</div>
                 <div className="oscars">Oscars: {this.props.oscars ? 'Yes' : 'No'}</div>
                 <div className="genre">Genre: {this.props.genre}</div>

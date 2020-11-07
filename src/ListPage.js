@@ -1,8 +1,8 @@
 import './App.css';
-import request from 'superagent';
 import React, { Component } from 'react';
 import MoviesRender from './MoviesRender.js'
 import { Link } from 'react-router-dom';
+import { fetchMovies } from './APIFunctions.js';
 
 export default class App extends Component {
 state = {
@@ -10,30 +10,31 @@ state = {
 }
 
   componentDidMount = async () => {
-    await this.fetchMovies();
-  }
+    const movies = await fetchMovies();
 
-  fetchMovies = async () => {
-      const response = await request.get(`https://safe-ridge-25828.herokuapp.com/movies`)
-
-      await this.setState({ movies: response.body })
+    this.setState({ movies });
   }
 
   render() {
+    const { movies } = this.state;
     return (
       <div>
-        <Link to="/create">Create Page</Link>
-      <div className="movie-list">
-        {
-          this.state.movies.map(movie => 
-            <MoviesRender
-              name={movie.name}
-              year={movie.year}
-              oscars={movie.oscars}
-              genre={movie.genre}
-              ownerId={movie.owner_id} />
-            )
-        }
+      <div className="body">
+        <header className="title">Full Movie List</header>
+        <div className="movie-grid">
+          {
+            movies.map(movie => 
+              <Link to={`/movie/${movie.id}`} className="movie-link">
+                <MoviesRender
+                  name={movie.name}
+                  year={movie.year}
+                  oscars={movie.oscars}
+                  genre={movie.genre}
+                  ownerId={movie.owner_id} />
+                </Link>
+              )
+          }
+        </div>
       </div>
       </div>
     )
