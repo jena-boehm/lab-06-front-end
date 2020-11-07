@@ -88,6 +88,8 @@
 
 .movie-grid {
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
   flex-wrap: wrap;
   width: 80%;
   justify-content: space-between;
